@@ -5,7 +5,7 @@ WORKDIR /opt/z-way-server
 RUN apt-get update && \
     apt-get install -qqy --no-install-recommends \
     ca-certificates curl \
-    wget procps gpg iproute2 openssh-client
+    wget procps gpg iproute2 openssh-client logrotate
 
 RUN wget -q -O - https://storage.z-wave.me/RaspbianInstall |bash
 COPY start.sh .
