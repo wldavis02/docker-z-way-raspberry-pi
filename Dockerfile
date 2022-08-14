@@ -3,6 +3,7 @@ FROM balenalib/rpi-raspbian
 WORKDIR /opt/z-way-server
 
 RUN sudo apt-get update && \
+    sudo apt-get upgrade -y && \
     sudo apt-get install -qqy --no-install-recommends \
     ca-certificates curl \
     wget procps gpg iproute2 openssh-client logrotate \
