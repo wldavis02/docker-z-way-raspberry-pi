@@ -7,7 +7,6 @@ RUN sudo apt-get update && \
     ca-certificates curl \
     wget procps gpg iproute2 openssh-client logrotate \
     dirmngr apt-transport-https && \
-    
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5b2f88a91611e683 && \
     sudo echo "deb https://repo.z-wave.me/z-way/raspbian bullseye main" > /etc/apt/sources.list.d/z-wave-me.list && \
     sudo apt-get update -y && \
