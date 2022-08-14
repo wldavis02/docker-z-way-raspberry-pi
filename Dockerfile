@@ -1,21 +1,17 @@
-FROM balenalib/raspberry-pi
+FROM balenalib/rpi-raspbian
 
 WORKDIR /opt/z-way-server
 
-RUN sudo apt-get update && \
-    sudo apt-get upgrade -y && \
-    sudo apt-get install -qqy --no-install-recommends \
+RUN apt-get update && \
+    apt-get install -qqy --no-install-recommends \
     ca-certificates curl \
-    wget procps gpg iproute2 openssh-client logrotate \
-    dirmngr apt-transport-https && \
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 5b2f88a91611e683 && \
-    sudo echo "deb https://repo.z-wave.me/z-way/raspbian bullseye main" > /etc/apt/sources.list.d/z-wave-me.list && \
-    sudo apt-get update -y && \
-    sudo apt-get install --reinstall -y z-way-full z-way-server zbw webif
-    
+    wget procps gpg iproute2 openssh-client logrotate
+
+RUN wget -q -O - https://storage.z-wave.me/RaspbianInstall |bash
 COPY start.sh .
 RUN chmod a+x start.sh
 
 EXPOSE 8083
+VOLUME /opt/z-way-server/config/zddx
 
 CMD /opt/z-way-server/start.sh
