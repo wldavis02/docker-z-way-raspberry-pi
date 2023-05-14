@@ -1,4 +1,4 @@
-FROM balenalib/raspberrypi4-64
+FROM balenalib/rpi-raspbian
 
 WORKDIR /opt/z-way-server
 
